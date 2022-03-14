@@ -46,7 +46,7 @@ const Main = () => {
                         type='text'
                         className={style.transferPropInput}
                         placeholder='0.0'
-                        onChange={e => handleChange(e, 'addressTo')}
+                        onChange={null}
                     />
                     <div className={style.currencySelector}></div>
                 </div>
