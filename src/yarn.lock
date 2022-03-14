@@ -364,6 +364,23 @@
     "@solana/wallet-adapter-base" "^0.9.3"
     "@solana/web3.js" "^1.20.0"
 
+"@solana/wallet-adapter-react-ui@^0.9.6":
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@solana/wallet-adapter-react-ui/-/wallet-adapter-react-ui-0.9.6.tgz#93420096b57acb7d3881095defdba1487814559b"
+  integrity sha512-nGI1rRA318yHc19x8tvhsouDss+7olHdxyGpZGtZN6/SUQzoRk94OB/+4XMkPL4Aosv3GIqWHFqqQfhcxCbOTQ==
+  dependencies:
+    "@solana/wallet-adapter-base" "^0.9.4"
+    "@solana/wallet-adapter-react" "^0.15.3"
+    "@solana/web3.js" "^1.36.0"
+
+"@solana/wallet-adapter-react@^0.15.3", "@solana/wallet-adapter-react@^0.15.4":
+  version "0.15.4"
+  resolved "https://registry.yarnpkg.com/@solana/wallet-adapter-react/-/wallet-adapter-react-0.15.4.tgz#413c3fa6893e9d809e5a6dd4730695fba942967b"
+  integrity sha512-QB8tE1IqYxvHrdDZP3DGICuCq6xydvjUYhW+usIahORmHniFF62Mp/LPfdAGZRDFF7U2/rZPktGFiOxWUJA7Qw==
+  dependencies:
+    "@solana/wallet-adapter-base" "^0.9.4"
+    "@solana/web3.js" "^1.36.0"
+
 "@solana/wallet-adapter-safepal@^0.5.2":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@solana/wallet-adapter-safepal/-/wallet-adapter-safepal-0.5.3.tgz#01c8e9be225e420bc6000968c0cf84355605a4ad"
@@ -2448,7 +2465,7 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react@17.0.2:
+react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
