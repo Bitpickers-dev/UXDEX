@@ -296,6 +296,17 @@
     tiny-invariant "^1.2.0"
     tslib "^2.3.1"
 
+"@saberhq/stableswap-sdk@^1.12.53":
+  version "1.12.53"
+  resolved "https://registry.yarnpkg.com/@saberhq/stableswap-sdk/-/stableswap-sdk-1.12.53.tgz#8cde335df81d10d2853ef2a59a8a5a0d75deef23"
+  integrity sha512-KWIFJ6Pf/nnShYupU/t2SFpwQQTfuBwPjXbp2+9/0L+tWNQxxodJXFmWeh4jkvNrY36pcSDdLTwThXR5q7Bglw==
+  dependencies:
+    "@saberhq/solana-contrib" "^1.12.53"
+    "@saberhq/token-utils" "^1.12.53"
+    "@solana/buffer-layout" "^4.0.0"
+    lodash.mapvalues "^4.6.0"
+    tslib "^2.3.1"
+
 "@saberhq/token-utils@^1.12.53":
   version "1.12.53"
   resolved "https://registry.yarnpkg.com/@saberhq/token-utils/-/token-utils-1.12.53.tgz#405cebd330e68e537b4ce5ffc21462eced22cba7"
@@ -2434,6 +2445,11 @@ lodash-es@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
+lodash.mapvalues@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.mapvalues/-/lodash.mapvalues-4.6.0.tgz#1bafa5005de9dd6f4f26668c30ca37230cc9689c"
+  integrity sha1-G6+lAF3p3W9PJmaMMMo3IwzJaJw=
 
 lodash.merge@^4.6.2:
   version "4.6.2"
