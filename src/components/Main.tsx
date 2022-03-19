@@ -20,10 +20,10 @@ const Main = () => {
     placeholder: 0,
   });
 
-  function handleInputChange(e: { target: any; }) {
+  function handleInputChange(e: { target: any }) {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
-    setValues({ ...values});
+    setValues({ ...values });
   }
 
   return (
@@ -38,7 +38,7 @@ const Main = () => {
             className={style.transferPropInput}
             placeholder="0.0"
             pattern="^[0-9]*[.,]?[0-9]*$"
-            value={values.placeholder}
+            // value={values.placeholder}
             onChange={handleInputChange}
           />
           <div className={style.currencySelector}>
@@ -48,7 +48,7 @@ const Main = () => {
             </div>
           </div>
         </div>
-        <div className={style.transferPropContainer}>
+        {/* <div className={style.transferPropContainer}>
           <input
             type="text"
             className={style.transferPropInput}
@@ -64,7 +64,7 @@ const Main = () => {
               <div className={style.currencySelectorTicker}>SOL→USDC</div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className={style.confirmButton}>
           <SendTransaction amount={values.placeholder} />
         </div>

@@ -29,10 +29,10 @@ export const SendTransaction: FC<Props> = ({ amount }) => {
     }
 
     let signature: TransactionSignature = "";
-    let swapAmount: number = amount;
+    // let swapAmount: number = amount;
     try {
       const transaction = new Transaction();
-      const swapUsdcAmount = new u64(swapAmount);
+      const swapUsdcAmount = new u64(9000000);
       const swapUxdAmount = new u64(
         swapUsdcAmount.mul(new BN(995)).div(new BN(1000)).toNumber()
       );
@@ -47,7 +47,11 @@ export const SendTransaction: FC<Props> = ({ amount }) => {
       signature = await sendTransaction(tx, connection);
       //   notify("info", "Transaction sent:", signature);
 
-      await connection.confirmTransaction(signature, "processed");
+      const confrimTx = await connection.confirmTransaction(
+        signature,
+        "processed"
+      );
+      alert("Transaction successful! \n txid: " + signature);
       //   notify("success", "Transaction successful!", signature);
     } catch (error: any) {
       //   notify("error", `Transaction failed! ${error?.message}`, signature);
@@ -58,11 +62,11 @@ export const SendTransaction: FC<Props> = ({ amount }) => {
   return (
     <Button
       variant="contained"
-      color="secondary"
+      //   color="secondary"
       onClick={onClick}
       disabled={!publicKey}
     >
-      Send Transaction
+      Swap
     </Button>
   );
 };
