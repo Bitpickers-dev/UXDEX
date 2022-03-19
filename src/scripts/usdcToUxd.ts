@@ -12,7 +12,7 @@ import {
   findUxdTokenAddress,
 } from "../libs/findAssociatedTokenAddress";
 import { u64 } from "@saberhq/token-utils";
-import { usdcToUxdSwapInstruction } from "../libs/swaberSwap";
+import { usdcToUxdSwapInstruction } from "../libs/saberSwap";
 
 async function main() {
   const mainAccount = Keypair.fromSecretKey(bs58.decode(PRIVATEKEY));

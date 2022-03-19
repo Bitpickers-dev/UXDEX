@@ -1,19 +1,11 @@
-import BN from "bn.js";
-import {
-  sendAndConfirmTransaction,
-  Connection,
-  clusterApiUrl,
-  Transaction,
-  Keypair,
-  PublicKey,
-} from "@solana/web3.js";
+import { Transaction, PublicKey } from "@solana/web3.js";
 import { uxdToSolInstruction } from "../libs/uxdSwap";
 import {
   findUsdcTokenAddress,
   findUxdTokenAddress,
   findWsolTokenAddress,
 } from "../libs/findAssociatedTokenAddress";
-import { usdcToUxdSwapInstruction } from "../libs/swaberSwap";
+import { usdcToUxdSwapInstruction } from "./saberSwap";
 import { u64 } from "@saberhq/token-utils";
 
 export async function addUsdcToSolInstruction(
