@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from '../styles/Home.module.css';
-import { WalletDisconnectButton, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 const style = {
     wrapper: `p-4 w-screen flex justify-between items-center`,
@@ -14,7 +13,6 @@ const Header = () => {
             <div className={style.buttonsContainer}>
                 <div className={style.button}>
                     <WalletMultiButton />
-                    <WalletDisconnectButton />
                 </div>
             </div>
         </div >
