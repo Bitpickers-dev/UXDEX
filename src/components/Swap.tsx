@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { u64 } from "@saberhq/token-utils";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import {
   Keypair,
@@ -7,15 +8,16 @@ import {
   TransactionSignature,
 } from "@solana/web3.js";
 import { FC, ReactNode, useCallback } from "react";
+import BN from "bn.js";
+import { addUsdcToSolInstruction } from "../libs/composeSwap";
 
 type Props = {
-  amount: number
-  // children: ReactNode
-}
+  amount: number;
+};
 
 // import { useNotify } from "./notify";
 
-export const SendTransaction: FC<Props> = ({amount}) => {
+export const SendTransaction: FC<Props> = ({ amount }) => {
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
   //   const notify = useNotify();
@@ -27,17 +29,22 @@ export const SendTransaction: FC<Props> = ({amount}) => {
     }
 
     let signature: TransactionSignature = "";
-    let swapAmount : number = amount;
+    let swapAmount: number = amount;
     try {
-      const transaction = new Transaction().add(
-        SystemProgram.transfer({
-          fromPubkey: publicKey,
-          toPubkey: Keypair.generate().publicKey,
-          lamports: amount,      
-        },)
+      const transaction = new Transaction();
+      const swapUsdcAmount = new u64(swapAmount);
+      const swapUxdAmount = new u64(
+        swapUsdcAmount.mul(new BN(995)).div(new BN(1000)).toNumber()
       );
 
-      signature = await sendTransaction(transaction, connection);
+      const tx = await addUsdcToSolInstruction(
+        transaction,
+        publicKey,
+        swapUsdcAmount,
+        swapUxdAmount
+      );
+
+      signature = await sendTransaction(tx, connection);
       //   notify("info", "Transaction sent:", signature);
 
       await connection.confirmTransaction(signature, "processed");

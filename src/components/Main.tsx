@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { SendTransaction } from "./Swap";
 
 const style = {
@@ -16,6 +16,16 @@ const style = {
 };
 
 const Main = () => {
+  const [values, setValues] = useState({
+    placeholder: 0,
+  });
+
+  function handleInputChange(e: { target: any; }) {
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    setValues({ ...values});
+  }
+
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
@@ -28,12 +38,13 @@ const Main = () => {
             className={style.transferPropInput}
             placeholder="0.0"
             pattern="^[0-9]*[.,]?[0-9]*$"
-            onChange={undefined}
+            value={values.placeholder}
+            onChange={handleInputChange}
           />
           <div className={style.currencySelector}>
             <div className={style.currencySelectorContent}>
               <div className={style.currencySelectorIcon}></div>
-              <div className={style.currencySelectorTicker}>USDC</div>
+              <div className={style.currencySelectorTicker}>USDC→SOL</div>
             </div>
           </div>
         </div>
@@ -43,18 +54,19 @@ const Main = () => {
             className={style.transferPropInput}
             placeholder="0.0"
             onChange={undefined}
-            // value={this.state.text}
+            value={values.placeholder}
+            // onChange={handleInputChange}
           />
           <div className={style.currencySelector}>
             {" "}
             <div className={style.currencySelectorContent}>
               <div className={style.currencySelectorIcon}></div>
-              <div className={style.currencySelectorTicker}>SOL</div>
+              <div className={style.currencySelectorTicker}>SOL→USDC</div>
             </div>
           </div>
         </div>
         <div className={style.confirmButton}>
-          <SendTransaction amount={1}  />
+          <SendTransaction amount={values.placeholder} />
         </div>
       </div>
     </div>
