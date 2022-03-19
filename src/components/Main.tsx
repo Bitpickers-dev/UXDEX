@@ -43,6 +43,7 @@ const Main = () => {
             className={style.transferPropInput}
             placeholder="0.0"
             onChange={undefined}
+            // value={this.state.text}
           />
           <div className={style.currencySelector}>
             {" "}
@@ -53,7 +54,7 @@ const Main = () => {
           </div>
         </div>
         <div className={style.confirmButton}>
-          <SendTransaction />
+          <SendTransaction amount={1}  />
         </div>
       </div>
     </div>

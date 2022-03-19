@@ -6,10 +6,16 @@ import {
   Transaction,
   TransactionSignature,
 } from "@solana/web3.js";
-import { FC, useCallback } from "react";
+import { FC, ReactNode, useCallback } from "react";
+
+type Props = {
+  amount: number
+  // children: ReactNode
+}
+
 // import { useNotify } from "./notify";
 
-export const SendTransaction: FC = () => {
+export const SendTransaction: FC<Props> = ({amount}) => {
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
   //   const notify = useNotify();
@@ -21,13 +27,14 @@ export const SendTransaction: FC = () => {
     }
 
     let signature: TransactionSignature = "";
+    let swapAmount : number = amount;
     try {
       const transaction = new Transaction().add(
         SystemProgram.transfer({
           fromPubkey: publicKey,
           toPubkey: Keypair.generate().publicKey,
-          lamports: 1,
-        })
+          lamports: amount,      
+        },)
       );
 
       signature = await sendTransaction(transaction, connection);
