@@ -46,7 +46,7 @@ export const uxdToSolInstruction = ({
   const amountData: Uint8Array = amountInMax.toBuffer();
   const amountBuffer: Uint8Array = new Uint8Array(8);
   for (let i = 0; i < amountData.length; i++) {
-    amountBuffer[i] = amountData[amountData.length - 1 - i];
+    amountBuffer[i] = amountData[i];
   }
   const endBuffer: Uint8Array = new Uint8Array([5, 0, 0, 0]);
   const uint8ArrayData: Uint8Array = concatUint8Array([
