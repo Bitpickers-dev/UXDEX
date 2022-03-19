@@ -51,7 +51,7 @@ UXD Protocol はクローズドソースなので，実際にメインネット�
 
 # Demo
 
-動画を貼り付ける
+<img width="770" alt="demo" src="img/demo.png">
 
 # 対応ウォレット
 
