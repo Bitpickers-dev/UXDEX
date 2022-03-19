@@ -1,5 +1,5 @@
 import React from "react";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { SendTransaction } from "./Swap";
 
 const style = {
   wrapper: `absolute top-12  bottom-12 w-screen flex items-center justify-center mt-14`,
@@ -28,7 +28,7 @@ const Main = () => {
             className={style.transferPropInput}
             placeholder="0.0"
             pattern="^[0-9]*[.,]?[0-9]*$"
-            onChange={null}
+            onChange={undefined}
           />
           <div className={style.currencySelector}>
             <div className={style.currencySelectorContent}>
@@ -42,18 +42,18 @@ const Main = () => {
             type="text"
             className={style.transferPropInput}
             placeholder="0.0"
-            onChange={null}
+            onChange={undefined}
           />
           <div className={style.currencySelector}>
             {" "}
             <div className={style.currencySelectorContent}>
               <div className={style.currencySelectorIcon}></div>
-              <div className={style.currencySelectorTicker}>UXD</div>
+              <div className={style.currencySelectorTicker}>SOL</div>
             </div>
           </div>
         </div>
-        <div className={style.button}>
-          <WalletMultiButton />
+        <div className={style.confirmButton}>
+          <SendTransaction />
         </div>
       </div>
     </div>
