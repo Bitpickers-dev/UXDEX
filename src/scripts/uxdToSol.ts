@@ -13,12 +13,13 @@ import {
   findUxdTokenAddress,
   findWsolTokenAddress,
 } from "../libs/findAssociatedTokenAddress";
+import { u64 } from "@saberhq/token-utils";
 
 async function main() {
   const mainAccount = Keypair.fromSecretKey(bs58.decode(PRIVATEKEY));
   const wsolAccount = await findWsolTokenAddress(mainAccount.publicKey);
   const uxdAccount = await findUxdTokenAddress(mainAccount.publicKey);
-  const swapUxdAmount = new BN(1000000);
+  const swapUxdAmount = new u64(1000000);
 
   const connection = new Connection(clusterApiUrl("mainnet-beta"));
   const allocateTransaction = new Transaction({

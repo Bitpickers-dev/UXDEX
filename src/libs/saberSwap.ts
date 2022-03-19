@@ -37,7 +37,9 @@ export const usdcToUxdSwapInstruction = ({
   uxdAccount,
   amountIn,
 }: UsdcToUxdSwapInstruction): TransactionInstruction => {
-  const minimumAmountOut = new u64(amountIn.mul(new BN(0.995)).toNumber());
+  const minimumAmountOut = new u64(
+    amountIn.mul(new BN(995)).div(new BN(1000)).toNumber()
+  );
   return swapInstruction({
     config: USDC_TO_UXD_CONFIG,
     userAuthority: account,

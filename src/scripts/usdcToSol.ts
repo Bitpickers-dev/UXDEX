@@ -1,3 +1,4 @@
+import BN from "bn.js";
 import {
   sendAndConfirmTransaction,
   Connection,
@@ -7,34 +8,29 @@ import {
 } from "@solana/web3.js";
 import { PRIVATEKEY } from "./.env";
 import * as bs58 from "bs58";
-import {
-  findUsdcTokenAddress,
-  findUxdTokenAddress,
-} from "../libs/findAssociatedTokenAddress";
 import { u64 } from "@saberhq/token-utils";
-import { usdcToUxdSwapInstruction } from "../libs/saberSwap";
+import { addUsdcToSolInstruction } from "../libs/composeSwap";
 
 async function main() {
   const mainAccount = Keypair.fromSecretKey(bs58.decode(PRIVATEKEY));
-  const usdcAccount = await findUsdcTokenAddress(mainAccount.publicKey);
-  const uxdAccount = await findUxdTokenAddress(mainAccount.publicKey);
-  const swapUsdcAmount: u64 = new u64(1000000);
+  const swapUsdcAmount = new u64(2000000);
+  const swapUxdAmount = new u64(
+    swapUsdcAmount.mul(new BN(995)).div(new BN(1000)).toNumber()
+  );
 
   const connection = new Connection(clusterApiUrl("mainnet-beta"));
   const allocateTransaction = new Transaction({
     feePayer: mainAccount.publicKey,
   });
 
-  allocateTransaction.add(
-    usdcToUxdSwapInstruction({
-      account: mainAccount.publicKey,
-      usdcAccount: usdcAccount,
-      uxdAccount: uxdAccount,
-      amountIn: swapUsdcAmount,
-    })
+  const transaction = await addUsdcToSolInstruction(
+    allocateTransaction,
+    mainAccount.publicKey,
+    swapUsdcAmount,
+    swapUxdAmount
   );
 
-  const tx = await sendAndConfirmTransaction(connection, allocateTransaction, [
+  const tx = await sendAndConfirmTransaction(connection, transaction, [
     mainAccount,
     mainAccount,
   ]);
